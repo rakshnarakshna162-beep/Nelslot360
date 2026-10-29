@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NelSlot 360 | Smart Paddy Procurement</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#" onclick="showSection('dashboard'); return false;">
+    🌾 NelSlot <span>360</span>
+  </a>
+  <div class="top-actions">
+    <span class="demo-label">IDEATHON DEMO</span>
+    <button id="languageButton" class="language-button" onclick="toggleLanguage()">தமிழ்</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div>
+    <p class="eyebrow" data-en="SMART FARMING • SMARTER SELLING" data-ta="ஸ்மார்ட் விவசாயம் • சிறந்த விற்பனை">SMART FARMING • SMARTER SELLING</p>
+    <h1 data-en="Your Harvest. Your Time. Your Profit." data-ta="உங்கள் அறுவடை. உங்கள் நேரம். உங்கள் லாபம்.">Your Harvest. Your Time. Your Profit.</h1>
+    <p data-en="Book procurement slots, track tokens, compare prices and plan transport in one place."
+       data-ta="கொள்முதல் நேரத்தை பதிவு செய்யுங்கள், டோக்கனை கண்காணியுங்கள், விலைகளை ஒப்பிட்டு போக்குவரத்தை திட்டமிடுங்கள்.">
+       Book procurement slots, track tokens, compare prices and plan transport in one place.
+    </p>
+    <button class="primary-button" onclick="showSection('booking')" data-en="Book a Slot →" data-ta="நேரத்தை பதிவு செய் →">Book a Slot →</button>
+  </div>
+  <div class="hero-art">🌾</div>
+</div>
+
+<nav class="navigation">
+  <button class="nav-button active" data-section="dashboard" onclick="showSection('dashboard')" data-en="Dashboard" data-ta="முகப்பு">Dashboard</button>
+  <button class="nav-button" data-section="booking" onclick="showSection('booking')" data-en="Book Slot" data-ta="பதிவு">Book Slot</button>
+  <button class="nav-button" data-section="queue" onclick="showSection('queue')" data-en="Queue Tracker" data-ta="வரிசை கண்காணிப்பு">Queue Tracker</button>
+  <button class="nav-button" data-section="prices" onclick="showSection('prices')" data-en="Paddy Prices" data-ta="நெல் விலைகள்">Paddy Prices</button>
+  <button class="nav-button" data-section="transport" onclick="showSection('transport')" data-en="Transport" data-ta="போக்குவரத்து">Transport</button>
+  <button class="nav-button" data-section="weatherSection" onclick="showSection('weatherSection')" data-en="Weather Alert" data-ta="வானிலை எச்சரிக்கை">Weather Alert</button>
+</nav>
+
+<main class="container">
+
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="panel">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" data-en="YOUR FARMING OVERVIEW" data-ta="உங்கள் விவசாய நிலவரம்">YOUR FARMING OVERVIEW</p>
+        <h2 data-en="Farmer Dashboard" data-ta="விவசாயி முகப்பு">Farmer Dashboard</h2>
+        <p data-en="Keep track of your procurement bookings." data-ta="உங்கள் கொள்முதல் பதிவுகளை கண்காணியுங்கள்.">Keep track of your procurement bookings.</p>
+      </div>
+      <button class="primary-button" onclick="showSection('booking')" data-en="+ New Booking" data-ta="+ புதிய பதிவு">+ New Booking</button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <p data-en="Total Bookings" data-ta="மொத்த பதிவுகள்">Total Bookings</p>
+        <h2 id="totalBookings">0</h2>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🟢</div>
+        <p data-en="Active Bookings" data-ta="செயலில் உள்ளவை">Active Bookings</p>
+        <h2 id="activeBookings">0</h2>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <p data-en="Completed" data-ta="முடிக்கப்பட்டவை">Completed</p>
+        <h2 id="completedBookings">0</h2>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">❌</div>
+        <p data-en="Cancelled" data-ta="ரத்து செய்யப்பட்டவை">Cancelled</p>
+        <h2 id="cancelledBookings">0</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 data-en="Recent Bookings" data-ta="சமீபத்திய பதிவுகள்">Recent Bookings</h3>
+      <div id="recentBookings">No bookings yet. Create your first booking!</div>
+    </div>
+
+    <div class="info-banner">
+      <span>💡</span>
+      <div>
+        <strong data-en="Farmer-first procurement" data-ta="விவசாயிகளுக்கு முன்னுரிமை">Farmer-first procurement</strong>
+        <p data-en="Plan your visit, reduce waiting time and estimate your selling returns."
+           data-ta="உங்கள் வருகையை திட்டமிட்டு, காத்திருப்பு நேரத்தை குறைத்து, வருமானத்தை கணக்கிடுங்கள்.">
+          Plan your visit, reduce waiting time and estimate your selling returns.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking" class="panel hidden">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" data-en="SAVE TIME AT THE PROCUREMENT CENTRE" data-ta="கொள்முதல் மையத்தில் நேரத்தை சேமியுங்கள்">SAVE TIME AT THE PROCUREMENT CENTRE</p>
+        <h2 data-en="Book Your Procurement Slot" data-ta="கொள்முதல் நேரத்தை பதிவு செய்யுங்கள்">Book Your Procurement Slot</h2>
+        <p data-en="Enter your harvest details to generate a demo token." data-ta="டெமோ டோக்கனை பெற உங்கள் அறுவடை விவரங்களை உள்ளிடுங்கள்.">Enter your harvest details to generate a demo token.</p>
+      </div>
+    </div>
+
+    <div class="card form-card">
+      <form id="bookingForm">
+        <div class="form-grid">
+          <label>
+            <span data-en="Farmer Name" data-ta="விவசாயி பெயர்">Farmer Name</span>
+            <input id="farmerName" type="text" maxlength="70" required placeholder="Enter your name">
+          </label>
+
+          <label>
+            <span data-en="Village" data-ta="கிராமம்">Village</span>
+            <input id="village" type="text" maxlength="70" required placeholder="Enter village name">
+          </label>
+
+          <label>
+            <span data-en="Paddy Quantity (quintals)" data-ta="நெல் அளவு (குவிண்டால்)">Paddy Quantity (quintals)</span>
+            <input id="quantity" type="number" min="1" step="0.5" required placeholder="e.g. 20">
+          </label>
+
+          <label>
+            <span data-en="Preferred Date" data-ta="விரும்பும் தேதி">Preferred Date</span>
+            <input id="date" type="date" required>
+          </label>
+
+          <label class="full-width">
+            <span data-en="Preferred Time Slot" data-ta="விரும்பும் நேரம்">Preferred Time Slot</span>
+            <select id="slot" required>
+              <option value="9 AM - 11 AM">9 AM - 11 AM</option>
+              <option value="11 AM - 1 PM">11 AM - 1 PM</option>
+              <option value="2 PM - 4 PM">2 PM - 4 PM</option>
+              <option value="4 PM - 6 PM">4 PM - 6 PM</option>
+            </select>
+          </label>
+        </div>
+        <button class="primary-button" type="submit" data-en="Confirm Booking" data-ta="பதிவை உறுதிசெய்">Confirm Booking</button>
+      </form>
+      <div id="bookingResult" class="result-area"></div>
+    </div>
+  </section>
+
+  <!-- QUEUE -->
+  <section id="queue" class="panel hidden">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" data-en="YOUR TOKEN, YOUR TURN" data-ta="உங்கள் டோக்கன், உங்கள் முறை">YOUR TOKEN, YOUR TURN</p>
+        <h2 data-en="Queue Tracker" data-ta="வரிசை கண்காணிப்பு">Queue Tracker</h2>
+        <p data-en="View, complete, cancel or download a booking receipt." data-ta="பதிவுகளைப் பார்த்து, முடித்து, ரத்து செய்து, ரசீதை பதிவிறக்கலாம்.">View, complete, cancel or download a booking receipt.</p>
+      </div>
+    </div>
+    <div id="queueResult" class="booking-list"></div>
+  </section>
+
+  <!-- PRICE COMPARISON -->
+  <section id="prices" class="panel hidden">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" data-en="MAKE AN INFORMED SELLING DECISION" data-ta="தகவலறிந்து விற்பனை முடிவு எடுங்கள்">MAKE AN INFORMED SELLING DECISION</p>
+        <h2 data-en="Paddy Price Comparison" data-ta="நெல் விலை ஒப்பீடு">Paddy Price Comparison</h2>
+        <p data-en="Compare sample buyer prices and estimate returns after transport."
+           data-ta="மாதிரி வாங்குபவர் விலைகளை ஒப்பிட்டு போக்குவரத்து செலவுக்குப் பின் வருமானத்தை கணக்கிடுங்கள்.">
+          Compare sample buyer prices and estimate returns after transport.
+        </p>
+      </div>
+    </div>
+
+    <div class="warning-banner">
+      ⚠️ <span data-en="Illustrative demo prices only — not live market prices. Verify actual prices and quality deductions with buyers."
+      data-ta="இவை விளக்கத்திற்கான மாதிரி விலைகள் மட்டுமே; நேரடி சந்தை விலைகள் அல்ல. உண்மையான விலைகளை வாங்குபவர்களிடம் சரிபார்க்கவும்.">
+      Illustrative demo prices only — not live market prices. Verify actual prices and quality deductions with buyers.</span>
+    </div>
+
+    <div class="card">
+      <div class="form-grid">
+        <label>
+          <span data-en="Your Quantity (quintals)" data-ta="உங்கள் அளவு (குவிண்டால்)">Your Quantity (quintals)</span>
+          <input type="number" id="priceQuantity" min="1" value="20">
+        </label>
+        <label>
+          <span data-en="Total Transport Cost (₹)" data-ta="மொத்த போக்குவரத்து செலவு (₹)">Total Transport Cost (₹)</span>
+          <input type="number" id="priceTransportCost" min="0" value="1000">
+        </label>
+      </div>
+      <button class="primary-button" onclick="comparePrices()" data-en="Compare Net Returns" data-ta="நிகர வருமானத்தை ஒப்பிடு">Compare Net Returns</button>
+      <div id="priceResults" class="table-wrap"></div>
+    </div>
+  </section>
+
+  <!-- TRANSPORT -->
+  <section id="transport" class="panel hidden">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" data-en="SHARE A RIDE, REDUCE THE COST" data-ta="போக்குவரத்தை பகிர்ந்து செலவை குறையுங்கள்">SHARE A RIDE, REDUCE THE COST</p>
+        <h2 data-en="Shared Transport Calculator" data-ta="பகிரப்பட்ட போக்குவரத்து கணக்கீடு">Shared Transport Calculator</h2>
+        <p data-en="Estimate transport cost per quintal." data-ta="ஒவ்வொரு குவிண்டாலுக்குமான போக்குவரத்து செலவை கணக்கிடுங்கள்.">Estimate transport cost per quintal.</p>
+      </div>
+    </div>
+
+    <div class="card form-card">
+      <form id="transportForm">
+        <label>
+          <span data-en="Route / Village to Centre" data-ta="வழி / கிராமத்திலிருந்து மையம்">Route / Village to Centre</span>
+          <input id="route" type="text" required placeholder="e.g. Village to Procurement Centre">
+        </label>
+        <div class="form-grid">
+          <label>
+            <span data-en="Total Shared Quantity (quintals)" data-ta="மொத்த பகிரப்பட்ட அளவு">Total Shared Quantity (quintals)</span>
+            <input id="transportQty" type="number" min="1" step="0.5" required placeholder="e.g. 50">
+          </label>
+          <label>
+            <span data-en="Full Vehicle Cost (₹)" data-ta="வாகனத்தின் மொத்த செலவு (₹)">Full Vehicle Cost (₹)</span>
+            <input id="transportCost" type="number" min="0" required placeholder="e.g. 2500">
+          </label>
+        </div>
+        <button class="primary-button" type="submit" data-en="Calculate Cost" data-ta="செலவை கணக்கிடு">Calculate Cost</button>
+      </form>
+      <div id="transportResult" class="result-area"></div>
+    </div>
+  </section>
+
+  <!-- WEATHER -->
+  <section id="weatherSection" class="panel hidden">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" data-en="PROTECT YOUR HARVEST" data-ta="உங்கள் அறுவடையை பாதுகாக்கவும்">PROTECT YOUR HARVEST</p>
+        <h2 data-en="Weather Planning Alert" data-ta="வானிலை திட்டமிடல் எச்சரிக்கை">Weather Planning Alert</h2>
+        <p data-en="Use this demo to plan for possible weather disruptions."
+           data-ta="வானிலை மாற்றங்களுக்காக திட்டமிட இந்த டெமோவை பயன்படுத்துங்கள்.">
+          Use this demo to plan for possible weather disruptions.
+        </p>
+      </div>
+    </div>
+    <div class="card form-card">
+      <label>
+        <span data-en="Choose a demo weather condition" data-ta="மாதிரி வானிலை நிலையை தேர்வு செய்யுங்கள்">Choose a demo weather condition</span>
+        <select id="weather">
+          <option value="clear">No rain selected</option>
+          <option value="rain">Rain expected (demo)</option>
+          <option value="heat">Hot weather (demo)</option>
+        </select>
+      </label>
+      <button class="primary-button" onclick="checkWeather()" data-en="Check Planning Advice" data-ta="திட்டமிடல் ஆலோசனையை காண்க">Check Planning Advice</button>
+      <div id="weatherResult" class="result-area"></div>
+      <p class="small-note" data-en="This is a demo selection, not a live forecast. Check an official local weather forecast before travelling."
+         data-ta="இது டெமோ தேர்வு மட்டுமே; நேரடி வானிலை முன்னறிவிப்பு அல்ல. பயணத்திற்கு முன் அதிகாரப்பூர்வ உள்ளூர் முன்னறிவிப்பை சரிபார்க்கவும்.">
+        This is a demo selection, not a live forecast. Check an official local weather forecast before travelling.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>NelSlot 360</strong>
+  <p data-en="Grow Together. Sell Smarter. Protect Every Harvest."
+     data-ta="ஒன்றாக வளர்வோம். சிறப்பாக விற்போம். ஒவ்வொரு அறுவடையையும் பாதுகாப்போம்.">
+    Grow Together. Sell Smarter. Protect Every Harvest.
+  </p>
+  <small>Student ideathon prototype • Demo data • Not an official procurement service</small>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
